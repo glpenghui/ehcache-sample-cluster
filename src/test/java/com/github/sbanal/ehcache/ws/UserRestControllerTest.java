@@ -12,6 +12,7 @@ import org.springframework.boot.test.TestRestTemplate;
 import org.springframework.boot.test.WebIntegrationTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.client.RestTemplate;
 
@@ -21,6 +22,7 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
+@TestPropertySource(properties = { "impl.prefix=TwoStacksPlain", "java.net.preferIPv4Stack=true" })
 @SpringApplicationConfiguration(EhCacheApplication.class)
 @WebIntegrationTest({"server.port=0", "management.port=0"})
 public class UserRestControllerTest {
